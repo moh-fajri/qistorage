@@ -3,7 +3,8 @@ package main
 import (
 	"context"
 	"fmt"
-	"github.com/qasir-id/qistorage"
+
+	"github.com/moh-fajri/qistorage"
 )
 
 func main() {
@@ -15,4 +16,3 @@ func main() {
 	err := storage.Delete(context.Background(), "example/image.png")
 	fmt.Println("Error :", err)
 }
-

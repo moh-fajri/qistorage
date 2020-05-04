@@ -3,7 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
-	"github.com/qasir-id/qistorage"
+	"github.com/moh-fajri/qistorage"
 	"io/ioutil"
 	"os"
 )

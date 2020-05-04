@@ -1,4 +1,4 @@
-module github.com/qasir-id/qistorage
+module github.com/moh-fajri/qistorage
 
 go 1.12
 

@@ -3,7 +3,8 @@ package main
 import (
 	"context"
 	"fmt"
-	"github.com/qasir-id/qistorage"
+
+	"github.com/moh-fajri/qistorage"
 )
 
 func main() {
@@ -12,8 +13,7 @@ func main() {
 		Credential: "credential base64",
 	})
 
-	byte , err := storage.Get(context.Background(), "example/image.png")
+	byte, err := storage.Get(context.Background(), "example/image.png")
 	fmt.Println("Error :", err)
 	fmt.Println("Byte :", byte)
 }
-
