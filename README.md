@@ -22,16 +22,16 @@ storage := qistorage.NewAwsS3(&qistorage.AwsS3{
     BucketName: "bucket name",
     Region:     "region",
 })
-err = storage.Put(context.Background(), "path", byte)
+err := storage.Put(context.Background(), "path", byte)
 ```
 
 storage using GCP Storage
-```
+```go
 import "github.com/moh-fajri/qistorage"
 
 storage := qistorage.NewGcpStorage(&qistorage.GcpStorage{
     BucketName:"bucket name",
     Credential:"credential base64", // convert file credential.json to base64 --> https://www.base64decode.org/
 })
-err = storage.Put(context.Background(), "path", byte)
+err := storage.Put(context.Background(), "path", byte)
 ```
