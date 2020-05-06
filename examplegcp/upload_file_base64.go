@@ -13,7 +13,9 @@ func main() {
 		BucketName: "bucket name",
 		Credential: "credential base64",
 	})
-	// delete file in gcp
-	err := storage.Delete(context.Background(), "example/image.png")
+	//base64 string without data:image/png;base64
+	bs64 := "iVBORw0KGgoAAAANSUhEUgAACy4A"
+	// put file to gcp
+	err := storage.PutBase64(context.Background(), "example/image.png", bs64)
 	fmt.Println("Error :", err)
 }

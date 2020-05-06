@@ -2,12 +2,13 @@ package qistorage
 
 import (
 	"bytes"
-	"cloud.google.com/go/storage"
 	"context"
 	"encoding/base64"
-	"google.golang.org/api/option"
 	"io"
 	"io/ioutil"
+
+	"cloud.google.com/go/storage"
+	"google.golang.org/api/option"
 )
 
 type GcpStorage struct {
@@ -28,6 +29,23 @@ func (gs *GcpStorage) configuration(ctx context.Context) (*storage.Client, error
 	return client, nil
 }
 
+// PutBase64 to upload the file with base64 to gcp storage
+func (gs *GcpStorage) PutBase64(ctx context.Context, path string, bs64 string) error {
+	// convert base64 to file
+	data, err := base64.StdEncoding.DecodeString(bs64)
+	if err != nil {
+		return err
+	}
+	// Put with byte
+	err = gs.Put(ctx, path, data)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// Put to upload the file with byte to gcp storage
 func (gs *GcpStorage) Put(ctx context.Context, path string, fileByte []byte) error {
 	client, err := gs.configuration(ctx)
 	if err != nil {
@@ -45,6 +63,7 @@ func (gs *GcpStorage) Put(ctx context.Context, path string, fileByte []byte) err
 	return nil
 }
 
+// Get to Get the file from gcp storage
 func (gs *GcpStorage) Get(ctx context.Context, path string) ([]byte, error) {
 	client, err := gs.configuration(ctx)
 	if err != nil {
@@ -63,7 +82,8 @@ func (gs *GcpStorage) Get(ctx context.Context, path string) ([]byte, error) {
 	return data, nil
 }
 
-func (gs *GcpStorage) Delete(ctx context.Context, path string) error{
+// Delete to Delete the file from gcp storage
+func (gs *GcpStorage) Delete(ctx context.Context, path string) error {
 	client, err := gs.configuration(ctx)
 	if err != nil {
 		return err
