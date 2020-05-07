@@ -1,5 +1,7 @@
 # qistorage
 
+[![Build Status](https://travis-ci.org/moh-fajri/qistorage.svg?branch=master)](https://travis-ci.com/moh-fajri/qistorage)
+
 qistorage is file storage that uses aws s3 and GCP Storage.
 
 ## Instalation
